@@ -1,12 +1,77 @@
-# React + Vite
+# 🎲 React Dice Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive dice-rolling game built with **React** and **styled-components**. Players select a number and roll the dice. If the dice matches the selected number, they earn a point. Smooth animations, realistic dice roll sounds, and toast notifications enhance the experience.
 
-Currently, two official plugins are available:
+## 🎮 How to Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Select a number (1–6).
+2. Click on the dice to roll.
+3. If your selected number matches the dice face:
+   - 🎉 You earn the same point as Dice number!
+4. If your selected number doesn't match the dice face:
+   - 😣 You lose 2 points.
+4=5. Try to beat your high score!
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** – UI library
+- **Styled-components** – CSS-in-JS for scoped styles
+- **useState** - React state management
+## 📁 Project Structure
+
+```
+React_DiceGame/
+├── public/
+│   ├── images/
+│   │   ├── dice/
+│   │   │   └── dice_1.png ... dice_6.png
+│   │   └── dices.png     
+├── src/
+│   ├── components/
+│   │   ├── RollDice.jsx
+│   │   ├── StartGame.jsx
+│   │   └── ...
+│   ├── App.js
+│   ├── index.js
+│   └── styles/
+├── README.md
+└── package.json
+```
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/imamulkadir/React_DiceGame.git
+cd React_DiceGame
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the Application
+
+```bash
+npm start
+```
+
+## 📌 To-Do / Future Enhancements
+
+- Add persistent scoring using localStorage
+- Add multiplayer mode
+- Add difficulty levels (timed or limited rolls)
+- Add animations for win/loss feedback
+
+## 🙋‍♂️ Author
+
+**Imamul Kadir**  
+[GitHub Profile](https://github.com/imamulkadir)  
+📧 imamulkadiroyan@gmail.com
+
+## ⭐️ Show Your Support
+
+If you like this project, give it a ⭐️ on GitHub and share it with others!
