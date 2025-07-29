@@ -1,12 +1,13 @@
+// RollDice.jsx
 import styled from "styled-components";
 
-const RollDice = ({ currentDice, rollDice }) => {
+const RollDice = ({ currentDice, rollDice, isRolling }) => {
   return (
     <DiceContainer>
       <div className="dice" onClick={rollDice}>
         <img src={`./images/dice/dice_${currentDice}.png`} alt="dice" />
       </div>
-      <p>Click on Dice to roll</p>
+      <p>{isRolling ? "Rolling..." : "Click on Dice to roll"}</p>
     </DiceContainer>
   );
 };

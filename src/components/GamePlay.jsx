@@ -1,3 +1,4 @@
+// GamePlay.jsx
 import styled from "styled-components";
 import NumberSelector from "./NumberSelector";
 import TotalScore from "./TotalScore";
@@ -9,13 +10,10 @@ import Rules from "./Rules";
 const GamePlay = () => {
   const [score, setScore] = useState(0);
   const [selectedNumber, setSelectedNumber] = useState();
-  const [currentDice, setCurrentDice] = useState("1");
+  const [currentDice, setCurrentDice] = useState(1);
   const [error, setError] = useState("");
   const [showRules, setShowRules] = useState(false);
-
-  const generateRandomDice = (min, max) => {
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
+  const [isRolling, setIsRolling] = useState(false);
 
   const rollDice = () => {
     if (!selectedNumber) {
@@ -23,22 +21,37 @@ const GamePlay = () => {
       return;
     }
 
-    const randomNumber = generateRandomDice(1, 7);
-    setCurrentDice(randomNumber);
+    if (isRolling) return;
 
-    if (randomNumber === selectedNumber) {
-      setScore((prev) => prev + randomNumber);
-    } else {
-      setScore((prev) => prev - 2);
-    }
+    setIsRolling(true);
+    setError("");
 
-    setSelectedNumber(undefined);
+    const rollInterval = setInterval(() => {
+      const tempRoll = Math.floor(Math.random() * 6) + 1;
+      setCurrentDice(tempRoll);
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(rollInterval);
+      const finalRoll = Math.floor(Math.random() * 6) + 1;
+      setCurrentDice(finalRoll);
+      setIsRolling(false);
+
+      // scoring logic after animation completes
+      if (finalRoll === selectedNumber) {
+        setScore((prev) => prev + finalRoll);
+      } else {
+        setScore((prev) => prev - 2);
+      }
+
+      setSelectedNumber(undefined);
+    }, 1000);
   };
 
   const resetScore = () => {
     setScore(0);
     setSelectedNumber(undefined);
-    setCurrentDice("1");
+    setCurrentDice(1);
     setError("");
   };
 
@@ -53,7 +66,11 @@ const GamePlay = () => {
           setSelectedNumber={setSelectedNumber}
         />
       </div>
-      <RollDice currentDice={currentDice} rollDice={rollDice} />
+      <RollDice
+        currentDice={currentDice}
+        rollDice={rollDice}
+        isRolling={isRolling}
+      />
       <div className="btns">
         <OutlineButton onClick={resetScore}>Reset Score</OutlineButton>
         <Button onClick={() => setShowRules((prev) => !prev)}>
