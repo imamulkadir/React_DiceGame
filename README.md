@@ -25,9 +25,7 @@ React_DiceGame/
 │   ├── images/
 │   │   ├── dice/
 │   │   │   └── dice_1.png ... dice_6.png
-│   │   └── dices.png
-│   └── sounds/
-│       └── dice-roll.mp3
+│   │   └── dices.png     
 ├── src/
 │   ├── components/
 │   │   ├── RollDice.jsx
